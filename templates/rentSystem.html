@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <title> 학생회 대여/반납 일지 </title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+      <h1><strong>{{name}} </strong></h1>
+
+      <input type="button" onclick="winRent()" value="대여" style="font-family:휴먼편지체; background-color:skyblue; color:#ffffff"/>
+      <input type="button" onclick="winReturn()" value="반납" style="font-family:휴먼편지체; background-color:skyblue; color:#ffffff"/>
+
+      <ul>
+          <script>
+            var str = '{{ product_list|tojson|safe }}';
+            str = str.replace(/&#34;/g,'"');
+            console.log(str);
+
+
+
+            document.write(str);
+            </script>
+      </ul>
+
+      <script>
+        function winRent() {
+          myWin = window.open("rent.html","new","width=400,height=300");
+        }
+        function winReturn() {
+          myWin = window.open("return.html","new","width=400,height=300");
+        }
+      </script>
+
+
+  </body>
+</html>
