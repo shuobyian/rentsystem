@@ -4,33 +4,72 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex">
     <title> 학생회 대여/반납 일지 </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="sylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
   </head>
-  <body>
+  <body leftMargin="0" topMargin="0">
 
       <h1><strong>{{name}} </strong></h1>
 
       <input type="button" onclick="winRent()" value="대여" style="font-family:휴먼편지체; background-color:skyblue; color:#ffffff"/>
       <input type="button" onclick="winReturn()" value="반납" style="font-family:휴먼편지체; background-color:skyblue; color:#ffffff"/>
+      <input type="button" onclick="location.href='/'" value="처음으로" style="font-family:휴먼편지체; background-color:skyblue; color:#ffffff"/>
 
-      <ul>
-          <script>
-            var str = '{{ product_list|tojson|safe }}';
-            str = str.replace(/&#34;/g,'"');
-            console.log(str);
+      <br />
+      <br />
+      <table id="rentList" class = "table table-bordered">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>대여물품</th>
+            <th>대여물품번호</th>
+            <th>학번</th>
+            <th>대여자</th>
+            <th>연락처</th>
+            <th>대여담당</th>
+            <th>대여일</th>
+            <th>반납담당</th>
+            <th>반납일</th>
+            <th>연체료</th>
+          </thead>
+          <tbody id="mydata">
+            <script>
+              var str = '{{ product_list|tojson|safe }}';
 
-
-
-            document.write(str);
+              //document.write(str);
+              //document.write("<br/>");
+              var newArr=JSON.parse(str);
+              for(var idx=0;idx<newArr.length;idx++){
+                  document.write("<tr>");
+                  document.write("<td>"+newArr[idx].sequecne+"</td>");
+                  document.write("<td>"+newArr[idx].name+"</td>");
+                  document.write("<td>"+newArr[idx].productnumber+"</td>");
+                  document.write("<td>"+newArr[idx].studentnumber+"</td>");
+                  document.write("<td>"+newArr[idx].person+"</td>");
+                  document.write("<td>"+newArr[idx].phonenumber+"</td>");
+                  document.write("<td>"+newArr[idx].rentsa+"</td>");
+                  document.write("<td>"+newArr[idx].rentyear+"."+newArr[idx].rentmonth+"."+newArr[idx].rentday+"</td>");
+                  document.write("<td>"+newArr[idx].returnsa+"</td>");
+                  document.write("<td>"+newArr[idx].returnyear+"."+newArr[idx].returnmonth+"."+newArr[idx].returnday+"</td>");
+                  document.write("<td>"+newArr[idx].returnfine+"</td>");
+                  document.write("</tr>");
+              }
             </script>
-      </ul>
 
       <script>
+        var l = Math.ceil((window.screen.width-500)/2);
+        var t = Math.ceil((window.screen.height-300)/2);
         function winRent() {
-          myWin = window.open("rent.html","new","width=400,height=300");
+          //myWin = window.open("rent.html","new","top="+top+",left="+left+,",height="+windowH+",width="+windowW);
+          myWin = window.open("rent.html","new","width=500,height=500,top=" +t+",left="+l+"");
+
         }
         function winReturn() {
-          myWin = window.open("return.html","new","width=400,height=300");
+          myWin = window.open("return.html","new","width=500,height=200,top=" +t+",left="+l+"");
         }
       </script>
 

@@ -5,21 +5,48 @@
   </head>
   <body>
     <p> 대여자 정보 입력
-      <form action = "/login/rent.html/result" method = "post"> </br>
-        대여자 : <input type="text" maxLength="20" name = "rent_person"> </br>
-        대여물품 : <input type="text" maxLength="20" name = "rent_name"> </br>
-        대여물품번호 : <input type="text" maxLength="20" name = "rent_num"> </br>
-        대여담당 : <input type="text" maxLength="20" name = "rent_sa"> </br>
-        대여일자 : <input type="text" maxLength="20" name = "rent_year,rent_month,rent_day"> </br>
-        <input type = "submit" onclick = "location.href='http:/login/rent.html/result'" name = "form" value = "Submit" />
+      <form name = "rentForm" action="http:db/resultrent" method="POST"> </br>
+        학번 : <input id="id" type="text" maxLength="20" name = "snu"> </br>
+        이름 : <input id="name" type="text" maxLength="20" name = "rpe"> </br>
+        연락처 : <input id="phone" type="text" maxLength="20" name = "pnu"> </br>
+        대여물품 : <input id="rent" type="text" maxLength="20" name = "rna"> </br>
+        대여물품번호 : <input id="rent_num" type="text" maxLength="20" name = "rnu"> </br>
+        대여담당 : <input id="sa" type="text" maxLength="20" name = "rsa"> </br>
+        대여일자 : <input id="date" type="text" maxLength="20" name = "rda" placeholder="ex)20180101" onKeyPress="if(keyCode==13){checkValues();}"> </br>
+        <input type = "submit" onclick = "checkValues()" name = "form" value = "Submit" />
         <input type = "reset" value = "reset"/> <br>
       </form>
     </p>
 
+    <script>
 
+    function checkValues() {
+      if(document.rentForm.snu.value=="") {
+        alert("학번을 입력해주세요.");
+        return document.rentForm.snu.focus();
+      } else if(document.rentForm.rpe.value=="") {
+        alert("이름을 입력해주세요.");
+        return document.rentForm.rpe.focus();
+      } else if(document.rentForm.pnu.value=="") {
+        alert("연락처를 입력해주세요.");
+        return document.rentForm.pnu.focus();
+      } else if(document.rentForm.rna.value=="") {
+        alert("대여물품을 입력해주세요.");
+        return document.rentForm.rna.focus();
+      } else if(document.rentForm.rnu.value=="") {
+        alert("대여물품번호를 입력해주세요.");
+        return document.rentForm.rnu.focus();
+      } else if(document.rentForm.rsa.value=="") {
+        alert("대여담당을 입력해주세요.");
+        return document.rentForm.rsa.focus();
+      } else if(document.rentForm.rda.value=="") {
+        alert("대여일자를 입력해주세요.");
+        return document.rentForm.rda.focus();
+      } else {
+      }
+    }
 
-
-
+    </script>
 
   </body>
 </html>

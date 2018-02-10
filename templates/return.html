@@ -1,18 +1,38 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title> 반납 명단 입력 </title>
   </head>
   <body>
     <p> 반납자 정보 입력
-      <form action = "/rent" method = "post">
-        반납물품번호 : <input type  = "text" name = "rent_num"> <br/>
-        반납일자: <input type = "text" name = "rent_year,rent_month,rent_day" /> </br>
-        <input type = "submit" onclick = self.close(); name = "form" value = "Submit" />
+      <form name = "returnForm" action="http:db/resultreturn" method="POST"> </br>
+        반납담당 : <input id="sa" type = "text" maxLength="20" name = "rtsa"> </br>
+        반납물품 : <input id="return" type ="text" maxLength="20" name = "rtna"> </br>
+        반납물품번호 : <input id="return_num" type  = "text" maxLength="20" name = "rtnu"> </br>
+        반납일자 : <input id="data" type = "text" maxLength="20" name = "rtda" placeholder="ex)20180101" onKeyPress="if(keyCode==13){checkValues();}"/> </br>
+        <input type = "submit" onclick = "checkValues()" name = "form" value = "Submit"/>
         <input type = "reset" value = "reset"/> <br>
       </form>
     </p>
 
+    <script>
+    function checkValues() {
+      if(document.returnForm.rtsa.value=="") {
+        alert("반납담당을 입력해주세요.");
+        return document.returnForm.rtsa.focus();
+      } else if(document.returnForm.rtna.value=="") {
+        alert("반납물품를 입력해주세요.");
+        return document.returnForm.rtna.focus();
+      } else if(document.returnForm.rtnu.value=="") {
+        alert("반납물품번호를 입력해주세요.");
+        return document.returnForm.rtnu.focus();
+      } else if(document.returnForm.rtda.value=="") {
+        alert("반납일자를 입력해주세요.");
+        return document.returnForm.rtda.focus();
+      } else {
+      }
+    }
+    </script>
 
 
   </body>

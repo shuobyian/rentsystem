@@ -5,22 +5,33 @@
     <title> 학생회 대여/반납 시스템 </title>
   </head>
   <body>
-    <form name="frm1">
-    password : <input type="password" maxLength="20" name = "password">
-    <input type = "button" value = "로그인" onclick = "pwCheck()">
+    <form method="POST" name="loginForm" action="http:login/dbassociationrentreturnsystem">
+    password : <input type="password" maxLength="20" name = "password" onKeyPress="if(keyCode==13){pwCheck();}" >
+    <input method="POST" type = "button" value = "로그인" onclick = "pwCheck()">
   </form>
 
   <script>
+
     function pwCheck()
     {
-      if(document.frm1.password.value == "sbdh8129")
+      if(document.loginForm.password.value == "sbdh8129")
       {
-        location.href = "http:login/db";
+        location.href="http:login/dbassociationrentreturnsystem";
+
       }
       else {
         alert("다시 입력하여 주세요.")
       }
     }
+
+    // $(document).keypress(function(event) {
+    //   var keycode = (event.keyCode ? event.keyCode : event.which);
+    //   if(keyCode == '13') {
+    //     pwCheck();
+    //   }
+    // });
+
+
 
   </script>
 

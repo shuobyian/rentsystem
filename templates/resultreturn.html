@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> 반납 정보 확인 </title>
+  </head>
+  <body>
+    <p> 반납자 정보 확인
+      <form action="http:db/resultreturn/fine" method="POST"> </br>
+        반납물품 :  {{rtna}}</br>
+        반납물품번호 :  {{rtnu}}</br>
+        반납담당 :  {{rtsa}}</br>
+        반납일자 :  {{rtyear}}{{rtmonth}}{{rtday}}</br></br>
+      </form>
+      <input type="button" onclick = "self.close()" value = "확인">
+    </p>
+
+  </body>
+</html>

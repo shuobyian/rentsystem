@@ -1,46 +1,51 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title> 학생회 대여 물품 목록 </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="sylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
   </head>
   <body>
       <h1><strong> {{name}} </strong></h1>
+      <input type="button" onclick="location.href='http:login'" value="대여/반납" style="font-family:휴먼편지체; background-color:white; color:#000000"/>
+      <br />
+      <br />
+      <table id="rentList" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>대여물품</th>
+                <th>물품번호</th>
+                <th>대여가능여부</th>
+                <th>대여일자</th>
+            </tr>
+       </thead>
+       <tbody id="mydata">
+         <script>
+           var str = '{{ product_list|tojson|safe }}';
 
-      <input type="button" onclick="location.href='http:login'" value="대여/반납" style="font-family:휴먼편지체; background-color:skyblue; color:#ffffff"/>
-
-      <ul>
-          <script>
-            var str = '{{ product_list|tojson|safe }}';
-            str = str.replace(/&#34;/g, '"');
-
-              console.log(str);
-
-          //  console.log(JSON.parse(str));
-          $(document).ready(function () {
-            $.getJSON(str,
-            function () {
-              var tr;
-              for(var i=0;i<str.length;i++) {
-                tr = $("<tr></tr>");
-                tr.append('<td>' + str[i].data[rent_num] + '</td>');
-                tr.append('<td>' + str[i].data[rent_name] + '</td>');
-                tr.append('<td>' + str[i].data[rent_possible] + '</td>');
-                tr.append('<td>' + str[i].data[rent_year] + '</td>');
-                tr.append('<td>' + str[i].data[rent_month] + '</td>');
-                tr.append('<td>' + str[i].data[rent_day] + '</td>');
-                $('table').append(tr);
-              }
-            });
-          });
-            document.write(str);
-
-          </script>
-      </ul>
-
-
-
-
+           //document.write(str);
+           //document.write("<br/>");
+           var newArr=JSON.parse(str);
+           for(var idx=0;idx<newArr.length;idx++){
+               document.write("<tr>");
+               document.write("<td>"+newArr[idx].rentnumber+"</td>");
+               document.write("<td>"+newArr[idx].product+"</td>");
+               document.write("<td>"+newArr[idx].productnumber+"</td>");
+               document.write("<td>"+newArr[idx].possible+"</td>");
+               if(newArr[idx].dueyear!=0){
+                document.write("<td>"+newArr[idx].dueyear+"."+newArr[idx].duemonth+"."+newArr[idx].dueday+"</td>");
+               }
+               document.write("</tr>");
+           }
+         </script>
+       </tbody>
+     </table>
   </body>
 </html>
