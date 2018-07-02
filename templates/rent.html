@@ -2,6 +2,9 @@
 <html>
   <head>
     <title> 대여 명단 입력 </title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </head>
   <body>
     <p> 대여자 정보 입력
@@ -9,7 +12,14 @@
         학번 : <input id="id" type="text" maxLength="20" name = "snu"> </br>
         이름 : <input id="name" type="text" maxLength="20" name = "rpe"> </br>
         연락처 : <input id="phone" type="text" maxLength="20" name = "pnu"> </br>
-        대여물품 : <input id="rent" type="text" maxLength="20" name = "rna"> </br>
+       <!-- 대여물품 : <input id="rent" type="text" maxLength="20" name = "rna"> </br>-->
+        대여물품 : <select name="rna" size="1">
+            <option value="고데기" selected>고데기</option>
+            <option value="공학용 계산기">공학용 계산기</option>
+            <option value="마우스">마우스</option>
+            <option value="보조 배터리">보조 배터리</option>
+            <option value="우산">우산</option>
+        </select> </br>
         대여물품번호 : <input id="rent_num" type="text" maxLength="20" name = "rnu"> </br>
         대여담당 : <input id="sa" type="text" maxLength="20" name = "rsa"> </br>
         대여일자 : <input id="date" type="text" maxLength="20" name = "rda" placeholder="ex)20180101" onKeyPress="if(keyCode==13){checkValues();}"> </br>

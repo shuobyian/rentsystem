@@ -7,7 +7,7 @@
   <body>
     <form method="POST" name="loginForm" action="http:login/dbassociationrentreturnsystem">
     password : <input type="password" maxLength="20" name = "password" onKeyPress="if(keyCode==13){pwCheck();}" >
-    <input method="POST" type = "button" value = "로그인" onclick = "pwCheck()">
+    <input type = "submit" value = "로그인" onclick = "pwCheck()">
   </form>
 
   <script>
@@ -16,8 +16,7 @@
     {
       if(document.loginForm.password.value == "sbdh8129")
       {
-        location.href="http:login/dbassociationrentreturnsystem";
-
+        action = "http:login/dbassociationrentreturnsystem";
       }
       else {
         alert("다시 입력하여 주세요.")
